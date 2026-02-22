@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta information about the page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple  digital clock">
+       <title> Digital clock </title>
+       <style>
+        body{
+            padding: 0;
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url("image copy.png") no-repeat center/cover;
+        }
+        h2{
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 25px;
+            text-align: center;
+        }
+        .main{
+            display: flex;
+        }
+        .main div{
+            margin: 5px;
+            position: relative;
+        }
+        .main span{
+            width: 100px;
+            height: 80px;
+            background-color: slateblue;
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            opacity: .8;
+            color: white;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+        }
+        .main .text{
+            height: 30px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: blue;
+            opacity:0.8;
+            align-items: center;
+        }
+        .main #ampm{
+            height: 40px;
+            width: 40px;
+            font-size: 20px;
+            background:green;
+            position: fixed;
+        }
+       </style>
+    </head>
+    <body>
+        <h2>Digital clock</h2>
+        <div class="main">
+        <div>
+            <span id="hour">00</span>
+            <span class="text">Hours</span>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <span class="text">Minutes</span>
+        </div>
+        <div>
+            <span id="second">00</span>
+            <span class="text">Second</span>
+        </div>
+        <div>
+            <span id="ampm">AM</span>
+        </div>
+        </div>
+        <script>
+         function digitalclock(){
+            let time=new Date();
+                let hour=time.getHours();
+                let minute=time.getMinutes();
+                let second=time.getSeconds();
+                let ampm="AM"
+                if(hour>=12){
+                 ampm="PM";
+                   }  
+                 if(hour > 12){
+                      hour = hour - 12;
+               }              
+                if(hour==0){
+                    hour=12;
+                }
+                if(hour< 10){
+                hour="0" + hour;
+                }
+                if(minute < 10){
+                minute="0" +minute;
+                }
+                if(second < 10){
+                second="0" + second;
+                }
+
+                document.getElementById("hour").innerHTML=hour;
+                document.getElementById("minutes").innerHTML=minute;
+                document.getElementById("second").innerHTML=second;
+                document.getElementById("ampm").innerHTML=ampm;
+            }
+            digitalclock();
+            setInterval(digitalclock, 1000)
+        </script>
+    </body>
+</html>
